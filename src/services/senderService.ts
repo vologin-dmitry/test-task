@@ -30,7 +30,6 @@ export class PushClient implements PushingService {
   }
 
   async sendPushes(pushes: PushFirebaseNotification[]) {
-    console.log('here!');
     const result = await Promise.all(
       slice<PushFirebaseNotification>(pushes, this.maxMesageLength)
         .map((c) => this.client.sendEach(c.map((p) => ({
