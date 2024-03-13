@@ -26,7 +26,7 @@ export class PushClient implements PushingService {
       projectId: credential.project_id,
       storageBucket: `${credential.project_id}.appspot.com`,
     }));
-    this.maxMesageLength = 500;
+    this.maxMesageLength = Number(process.env.PUSH_CLIENT_MAX_MESSAGE_LENGTH) || 500;
   }
 
   async sendPushes(pushes: PushFirebaseNotification[]) {
